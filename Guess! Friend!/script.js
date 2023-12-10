@@ -79,6 +79,7 @@
         },
     ];
 
+
     let currentQuestionIndex = 0;
     let scores = {"李猛": 0, "娅妮": 0, "周延巽": 0, "小生命": 0, "松洺": 0};
 
@@ -88,6 +89,47 @@
         document.getElementById("quiz").style.display = "block";
         showQuestion();
     });
+
+    document.getElementById("D").addEventListener("click", function(event) {
+        event.stopPropagation(); // 阻止事件冒泡
+        moveButtonRandomly(this);
+    });
+
+    function moveButtonRandomly(button) {
+        var x = Math.random() * (window.innerWidth - button.clientWidth);
+        var y = Math.random() * (window.innerHeight - button.clientHeight);
+        button.style.position = 'absolute';
+        button.style.left = x + 'px';
+        button.style.top = y + 'px';
+    }
+
+    document.querySelectorAll(".option").forEach(button => {
+        button.addEventListener("click", function(event) {
+            if (this.id === 'D') {
+                event.stopPropagation(); // 阻止事件冒泡
+                moveButtonRandomly(this);
+                return; // 不继续执行其余代码
+            }
+    
+            let selectedOption = this.id;
+            updateScore(selectedOption);
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                showResult();
+            }
+        });
+    });
+    
+    function moveButtonRandomly(button) {
+        var x = Math.random() * (window.innerWidth - button.clientWidth);
+        var y = Math.random() * (window.innerHeight - button.clientHeight);
+        button.style.position = 'absolute';
+        button.style.left = x + 'px';
+        button.style.top = y + 'px';
+    }
+    
 
     function shuffleQuestions(questionsArray) {
         for (let i = questionsArray.length - 1; i > 0; i--) {

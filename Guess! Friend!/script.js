@@ -79,7 +79,7 @@
         },
         {
             question: "什么是一个“典中典”？",
-            options: {A: "锤石预判Q", B: "上课完Minecraft", C: "All Gender", D: "我不知道啊！"},
+            options: {A: "关灯玩恐怖游戏", B: "上课玩Minecraft", C: "All Gender", D: "我不知道啊！"},
             answer: {A: "松洺", B: "小生命", C: "李猛", D: null}
         },
     ];
